@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>PC端自定义checkbox</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <style rel="stylesheet" type="text/css">
+        .checkbox_area{
+            margin-top: 300px;
+            width: 100%;
+            min-width: 820px;
+        }
+        .checkbox_area .checkbox_item{
+            float: left;
+            width: 20%;
+        }
+        .checkbox_area .checkbox_labal i {
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            color: orange;
+            cursor: pointer;
+            text-align: center;
+            font: bold 20px/100% '宋体';
+            vertical-align: middle;
+            border-radius: .2em;
+            border: 1px solid #008000;
+            background-color: #fff;
+            margin-right: 15px;
+        }
+
+        .checkbox_area .checkbox {
+            display: block;
+            min-height: 20px;
+            line-height: 22px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            vertical-align: middle;
+            color: #008000;
+            border: 0;
+            font-size: 100%;
+            cursor: pointer;
+        }
+
+        .checkbox_area .checkbox input[type="checkbox"] {
+            filter: alpha(opacity=0);
+            opacity: 0;
+            float: left;
+            margin: 5px 0 0 -32px;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".checkbox_labal").each(function () {
+                var self = this;
+                $(self).click(function () {
+                    if ($(self).find('input:checkbox').is(':checked')) {
+                        $(self).find("i").html("√");
+                    } else {
+                        $(self).find("i").html("");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <div class="checkbox_area clearfix">
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix" >
+                    <i></i>
+                    <input type="checkbox" value="性激素六项">
+                    性激素六项
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="妇科免疫检查">
+                    妇科免疫检查
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="脱畸全套检查">
+                    脱畸全套检查
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="检查卵巢功能">
+                    检查卵巢功能
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix" >
+                    <i></i>
+                    <input type="checkbox" value="性激素六项">
+                    性激素六项
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="妇科免疫检查">
+                    妇科免疫检查
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="脱畸全套检查">
+                    脱畸全套检查
+                </label>
+            </div>
+            <div class="checkbox_item">
+                <label class="checkbox checkbox_labal clearfix">
+                    <i></i>
+                    <input type="checkbox" value="检查卵巢功能">
+                    检查卵巢功能
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
