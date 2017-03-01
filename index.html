@@ -16,7 +16,6 @@
             float: left;
             width: 20%;
         }
-        /*color: rgb(128, 128, 128) #808080;*/
         .checkbox_area .checkbox_labal i {
             float: left;
             display: block;
@@ -45,7 +44,7 @@
             font-size: 100%;
             cursor: pointer;
         }
-        .checkbox_labal.active i{
+        .checkbox_area .checkbox_labal.active i{
             color: orange;
             border: 1px solid #008000;
         }
@@ -65,8 +64,13 @@
     <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
     <script type="text/javascript">
         $(function () {
+
             $(".checkbox_labal").each(function () {
                 var self = this;
+                if($(self).hasClass('active')){
+                    $(self).find("i").html("√");
+                    $(self).find('input:checkbox').prop("checked",true);
+                }
                 $(self).click(function () {
                     if ($(self).find('input:checkbox').is(':checked')) {
                         $(self).find("i").html("√");
@@ -92,7 +96,7 @@
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_labal clearfix active">
                     <i></i>
                     <input type="checkbox" value="妇科免疫检查">
                     妇科免疫检查
@@ -134,7 +138,7 @@
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_labal clearfix active">
                     <i></i>
                     <input type="checkbox" value="检查卵巢功能">
                     检查卵巢功能
