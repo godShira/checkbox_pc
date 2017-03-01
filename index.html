@@ -7,16 +7,38 @@
     <title>PC端自定义checkbox</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <style rel="stylesheet" type="text/css">
-        .checkbox_area{
-            width: 100%;
-            min-width: 820px;
-            margin-top: 300px;
+        /*自定义单选按钮*/
+        .radio_area{
+            margin-top: 150px;
         }
-        .checkbox_area .checkbox_item{
+        .radio_area .radio_item{
             float: left;
-            width: 20%;
+            width: 10%;
         }
-        .checkbox_area .checkbox_labal i {
+        .radio_area .radio_item .radio_label{
+            display: block;
+            min-height: 20px;
+            line-height: 22px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            vertical-align: middle;
+            color: #808080;
+            border: 0;
+            font-size: 100%;
+            cursor: pointer;
+        }
+        .radio_area .radio_item .radio_label input[type="radio"] {
+            filter: alpha(opacity=0);
+            opacity: 0;
+            float: left;
+            margin: 5px 0 0 -32px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        .radio_area .radio_item .radio_label i {
             float: left;
             display: block;
             width: 20px;
@@ -26,7 +48,53 @@
             text-align: center;
             font: bold 20px/100% '宋体';
             vertical-align: middle;
-            border-radius: .2em;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            border: 1px solid #808080;
+            background-color: #fff;
+            margin-right: 15px;
+        }
+        .radio_area .radio_item .radio_label i em{
+            display: block;
+            width: 10px;
+            height: 10px;
+            margin: 4px auto;
+            background: #dedede;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            border: 1px solid #B5B5B5;
+        }
+        .radio_area .radio_item .radio_label.active i em{
+            background: #008000;
+            border: 1px solid #008000;
+        }
+
+        /*自定义复选框*/
+        .checkbox_area {
+            width: 100%;
+            min-width: 820px;
+            margin-top: 300px;
+        }
+        .checkbox_area .checkbox_item {
+            float: left;
+            width: 20%;
+        }
+
+        .checkbox_area .checkbox_label i {
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            color: #808080;
+            cursor: pointer;
+            text-align: center;
+            font: bold 20px/100% '宋体';
+            vertical-align: middle;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
             border: 1px solid #808080;
             background-color: #fff;
             margin-right: 15px;
@@ -44,11 +112,13 @@
             font-size: 100%;
             cursor: pointer;
         }
-        .checkbox_area .checkbox_labal.active i{
+
+        .checkbox_area .checkbox_label.active i {
             color: orange;
             border: 1px solid #008000;
         }
-        .checkbox_area  .checkbox_labal.active{
+
+        .checkbox_area .checkbox_label.active {
             color: #008000;
         }
 
@@ -57,6 +127,8 @@
             opacity: 0;
             float: left;
             margin: 5px 0 0 -32px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
             box-sizing: border-box;
             vertical-align: middle;
         }
@@ -64,12 +136,29 @@
     <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
     <script type="text/javascript">
         $(function () {
-
-            $(".checkbox_labal").each(function () {
+            <!--自定义单选按钮-->
+            $(".radio_area1 .radio_label").each(function(){
                 var self = this;
-                if($(self).hasClass('active')){
+                $(self).find("i").html("<em></em>");
+                if ($(self).hasClass('active')) {
+                    $(self).find('input:radio').prop("checked", true);
+                }
+                $(self).click(function () {
+                    if ($(self).find('input:radio').is(':checked')) {
+                        $(".radio_area1 .radio_label").removeClass("active");
+                        $(self).addClass("active");
+                    } else {
+                        $(".radio_area1 .radio_label").removeClass("active");
+                    }
+                });
+            });
+
+            <!--自定义复选框-->
+            $(".checkbox_label").each(function () {
+                var self = this;
+                if ($(self).hasClass('active')) {
                     $(self).find("i").html("√");
-                    $(self).find('input:checkbox').prop("checked",true);
+                    $(self).find('input:checkbox').prop("checked", true);
                 }
                 $(self).click(function () {
                     if ($(self).find('input:checkbox').is(':checked')) {
@@ -87,58 +176,93 @@
 <body>
 <div class="container">
     <div class="wrapper">
+
+        <!--自定义单选按钮-->
+        <div class="radio_area radio_area1 clearfix">
+            <div class="radio_item">
+                <label class="radio_label clearfix">
+                    <i></i>
+                    <input type="radio" name="radio">
+                    男性
+                </label>
+            </div>
+            <div class="radio_item">
+                <label class="radio_label clearfix">
+                    <i></i>
+                    <input type="radio" name="radio">
+                    中性
+                </label>
+            </div>
+            <div class="radio_item">
+                <label class="radio_label clearfix active">
+                    <i></i>
+                    <input type="radio" name="radio">
+                    女性
+                </label>
+            </div>
+            <div class="radio_item">
+                <label class="radio_label clearfix">
+                    <i></i>
+                    <input type="radio" name="radio">
+                    外星人
+                </label>
+            </div>
+        </div>
+
+
+        <!--自定义复选框-->
         <div class="checkbox_area clearfix">
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix" >
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="性激素六项">
                     性激素六项
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix active">
+                <label class="checkbox checkbox_label clearfix active">
                     <i></i>
                     <input type="checkbox" value="妇科免疫检查">
                     妇科免疫检查
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="脱畸全套检查">
                     脱畸全套检查
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="检查卵巢功能">
                     检查卵巢功能
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix" >
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="性激素六项">
                     性激素六项
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="妇科免疫检查">
                     妇科免疫检查
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix">
+                <label class="checkbox checkbox_label clearfix">
                     <i></i>
                     <input type="checkbox" value="脱畸全套检查">
                     脱畸全套检查
                 </label>
             </div>
             <div class="checkbox_item">
-                <label class="checkbox checkbox_labal clearfix active">
+                <label class="checkbox checkbox_label clearfix active">
                     <i></i>
                     <input type="checkbox" value="检查卵巢功能">
                     检查卵巢功能
